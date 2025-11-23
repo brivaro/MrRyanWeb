@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
     { name: 'Inicio', href: '#hero' },
     { name: 'Sobre Mí', href: '#about' },
     { name: 'Noticias', href: '#news' },
-    { name: 'Vídeos', href: '#videos' },
+    //{ name: 'Vídeos', href: '#videos' },
     { name: 'Comunidad', href: '#social' },
   ];
 
