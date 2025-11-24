@@ -16,7 +16,8 @@ const CountUp: React.FC<CountUpProps> = ({ value, decimals = 0, duration = 2, cl
     stiffness: 100,
     duration: duration * 1000
   });
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  const isInView = useInView(ref, { once: true, margin: "-10px" });
 
   useEffect(() => {
     if (isInView) {
@@ -25,12 +26,12 @@ const CountUp: React.FC<CountUpProps> = ({ value, decimals = 0, duration = 2, cl
   }, [isInView, value, motionValue]);
 
   useEffect(() => {
-    springValue.on("change", (latest) => {
+    const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
         ref.current.textContent = latest.toFixed(decimals);
       }
     });
-    return () => springValue.destroy();
+    return unsubscribe;
   }, [springValue, decimals]);
 
   return <span ref={ref} className={className}>0</span>;
